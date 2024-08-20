@@ -3,12 +3,12 @@ const jwt = require("jsonwebtoken");
 
 function UserMiddleware(req, res, next){
     
-  
-    const jwtToken = req.send.authorization;
+    const jwtToken = req.headers.authorization;
     const splitToken = jwtToken.split(" ");
     const token = splitToken[1];
     const verified = jwt.verify(token, jwtpass);
-    if(verified){
+    if(verified.username){
+        req.username = verified.username;
         next();
     }
     else{
@@ -19,6 +19,4 @@ function UserMiddleware(req, res, next){
     
 }
 
-module.exports = {
-    UserMiddleware
-}
+module.exports = UserMiddleware;

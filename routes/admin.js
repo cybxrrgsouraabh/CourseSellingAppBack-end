@@ -1,11 +1,12 @@
-const express = require("express");
-const router = express.Router();
+const {Router} = require("express");
+const router = Router();
+const AdminMiddleware = require("../middleware/admin");
 const jwt = require("jsonwebtoken");
 const {jwtpass} = require('../config');
-const {adminMiddleware} = require("../middleware/admin");
-const {Admin, Course} = require('../db/index');
+const { Admin, Course } = require("../db/index");
 
-router.post("/signup", async(req, res)=>{
+router.post("/signup", async (req, res) => {
+
     const username = req.body.username;
     const password = req.body.password;
     try{
@@ -16,12 +17,12 @@ router.post("/signup", async(req, res)=>{
                 password
             });
             res.json({
-                message: "user created successfully"
+                message: "admin created successfully"
             })
         }
         else{
             res.json({
-                message: "the user already exists"
+                message: "the admin already exists"
             })
         }
 
@@ -36,12 +37,12 @@ router.post("/signup", async(req, res)=>{
 router.post("/login", (req, res)=>{
 
 });
-router.post("/create", adminMiddleware, (req, res)=>{
+router.post("/create", AdminMiddleware, (req, res)=>{
 
 });
-router.get("/courses", adminMiddleware, (req, res)=>{
+router.get("/courses", AdminMiddleware, (req, res)=>{
 
 });
 
 
-module.exports = adminRouter;
+module.exports = router;

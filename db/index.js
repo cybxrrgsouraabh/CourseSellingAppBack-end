@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { usernameSchema } = require("../zod");
 mongoose.connect("mongodb+srv://cyybxrg_p:cyybxrg7417@cluster0.fpt7cvq.mongodb.net/CourseSellingApp");
 
 const UserSchema = new mongoose.Schema({
@@ -25,6 +24,8 @@ const User = mongoose.model("User",UserSchema);
 const Admin = mongoose.model("Admin", AdminSchema);
 const Course = mongoose.model("Course", CourseSchema);
 
-module.exprots = {
-    User, Admin,Course
+module.exports = {
+    User,
+    Admin,
+    Course
 }
