@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://cyybxrg_p:cyybxrg7417@cluster0.fpt7cvq.mongodb.net/CourseSellingApp");
+mongoose.connect("mongodb+srv://cyybxrg_p:<password>@cluster0.fpt7cvq.mongodb.net/CourseSellingApp");
+// just removed the password from the connection string
 
 const UserSchema = new mongoose.Schema({
     username: String,
